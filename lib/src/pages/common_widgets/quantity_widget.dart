@@ -47,7 +47,7 @@ class QuantityWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6),
             child: Text(
-              '$value$suffixText',
+              '$value $suffixText',
               style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
