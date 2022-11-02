@@ -93,7 +93,11 @@ class _CartTabState extends State<CartTab> {
                 SizedBox(
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      bool? result = await showOrderConfirmation();
+
+                      print(result);
+                    },
                     style: ElevatedButton.styleFrom(
                       primary: CustomColors.customSwatchColor,
                       shape: RoundedRectangleBorder(
@@ -113,6 +117,40 @@ class _CartTabState extends State<CartTab> {
           )
         ],
       ),
+    );
+  }
+
+  Future<bool?> showOrderConfirmation() {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          title: const Text('Confirmação'),
+          content: const Text('Deseja realmente concluir seu pedido?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: const Text('Não'),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              child: const Text('Sim'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
