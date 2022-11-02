@@ -101,8 +101,8 @@ UserModel user = UserModel(
 List<OrderModel> orders = [
   OrderModel(
     id: 'wgesrfs4dg5sd',
-    createdDateTime: DateTime.parse('2021/06/08 10:00:10:458'),
-    overdueDateTime: DateTime.parse('2021/06/08 11:00:10:458'),
+    createdDateTime: DateTime.parse('2021-06-08 10:00:10.458'),
+    overdueDateTime: DateTime.parse('2021-06-08 11:00:10.458'),
     total: 11.0,
     items: [
       CartItemModel(
