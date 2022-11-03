@@ -131,7 +131,7 @@ List<OrderModel> orders = [
         quantity: 1,
       ),
     ],
-    status: 'pending_payment',
+    status: 'refunded',
     copyAndPast: 'qs25w2w5s25s5s',
   ),
 ];
