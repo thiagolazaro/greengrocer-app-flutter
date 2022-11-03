@@ -115,7 +115,7 @@ List<OrderModel> orders = [
         quantity: 2,
       ),
     ],
-    status: 'peding_payment',
+    status: 'pending_payment',
     copyAndPast: 'qs25w2w5s25s5s',
   ),
 
@@ -131,7 +131,7 @@ List<OrderModel> orders = [
         quantity: 1,
       ),
     ],
-    status: 'peding_payment',
+    status: 'pending_payment',
     copyAndPast: 'qs25w2w5s25s5s',
   ),
 ];
