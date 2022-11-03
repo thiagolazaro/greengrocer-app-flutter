@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/models/cart_item_model.dart';
 import 'package:greengrocer/src/models/order_model.dart';
 import 'package:greengrocer/src/services/utils_services.dart';
 
@@ -38,8 +39,78 @@ class OrderTile extends StatelessWidget {
               ),
             ],
           ),
-          children: const [],
+          childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          children: [
+            // Listagem dos produtos
+            SizedBox(
+              height: 150,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: ListView(
+                      children: order.items.map((orderItem) {
+                        // Lista de items do pedido
+                        return _OrderItemWidget(
+                          utilsServices: utilsServices,
+                          orderItem: orderItem,
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      color: Colors.blue,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
+      ),
+    );
+  }
+}
+
+class _OrderItemWidget extends StatelessWidget {
+  final CartItemModel orderItem;
+
+  const _OrderItemWidget({
+    Key? key,
+    required this.utilsServices,
+    required this.orderItem,
+  }) : super(key: key);
+
+  final UtilsServices utilsServices;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        children: [
+          // Quantidade e unidade do produto
+          Text(
+            '${orderItem.quantity} ${orderItem.item.unit} ',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
+          // Nome do produto
+          Expanded(
+            child: Text(orderItem.item.itemName),
+          ),
+
+          // Preço do produto
+          Text(
+            utilsServices.priceToCurrency(
+              orderItem.totalPrice(),
+            ),
+          ),
+        ],
       ),
     );
   }
