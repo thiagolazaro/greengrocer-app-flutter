@@ -61,11 +61,9 @@ class _ItemTileState extends State<ItemTile> {
                     child: Hero(
                       tag: widget.item.imgUrl,
                       // O key da imageKe tem que ser adicionando em um container
-                      child: Container(
+                      child: Image.asset(
+                        widget.item.imgUrl,
                         key: imageGK,
-                        child: Image.asset(
-                          widget.item.imgUrl,
-                        ),
                       ),
                     ),
                   ),

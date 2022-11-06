@@ -20,6 +20,7 @@ class UtilsServices {
 
   void showToast({
     required String message,
+    Color bgColor = Colors.white,
     bool isError = false,
   }) {
     Fluttertoast.showToast(
@@ -27,8 +28,9 @@ class UtilsServices {
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 3,
-      backgroundColor: isError ? Colors.red : Colors.white,
-      textColor: isError ? Colors.white : Colors.black,
+      backgroundColor: isError ? Colors.red : bgColor,
+      textColor:
+          isError || bgColor != Colors.white ? Colors.white : Colors.black,
       fontSize: 14,
     );
   }
